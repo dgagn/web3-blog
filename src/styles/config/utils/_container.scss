@@ -1,0 +1,27 @@
+@use '../spacing' as *;
+@use '../breakpoints' as *;
+
+@mixin container($size) {
+  width: calc(100% - 2 * #{spacing-get($size)});
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.container {
+  @include container(md);
+}
+
+.container-2xl {
+  @include container('md');
+  @include breakpoint('sm') {
+    @include container('2xl');
+  }
+}
+
+.container-lg {
+  @include container(lg);
+}
+
+.container-sm {
+  @include container(sm);
+}

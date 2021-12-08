@@ -1,0 +1,10 @@
+@use "../config/spacing" as *;
+
+.button {
+  display: block;
+  background-color: #000;
+  color: #fff;
+  padding: spacing-get('xs') spacing-get('lg');
+  cursor: pointer;
+  border-radius: spacing-get('sm');
+}

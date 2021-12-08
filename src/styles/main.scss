@@ -1,0 +1,31 @@
+@use 'config';
+@use 'components';
+@use 'config/breakpoints' as *;
+@use 'config/spacing' as *;
+@use 'config/colors' as *;
+@use "pages/connexion";
+
+::selection {
+  color: #000;
+  background-color: var(--color-primary-300);
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.spinner-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.spinner {
+  width: 10em;
+  height: 10em;
+}
