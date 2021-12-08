@@ -5,8 +5,8 @@ function RegisterPage() {
   const {register} = useAuth();
   return (
     <div className="max-w-sm container-2xl connexion">
-      <h1 className="connexion__title">S’inscrire</h1>
-      <p children="connexion__subtitle pt-sm">S'inscrire sur le blog</p>
+      <h1 className="connexion__title">S&apos;inscrire</h1>
+      <p className="connexion__subtitle pt-sm">S&apos;inscrire sur le blog</p>
       <RegisterForm onSubmit={register} />
     </div>
   );
