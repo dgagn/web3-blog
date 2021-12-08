@@ -35,4 +35,8 @@
     box-shadow: 0 0 0 2px var(--control-color-shadow-focus);
     transition: all 0.3s;
   }
+
+  &--error {
+    border: 1px solid var(--color-error-500);
+  }
 }

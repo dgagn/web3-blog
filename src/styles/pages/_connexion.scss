@@ -1,9 +1,9 @@
-@use "../config/typography" as *;
-@use "../config/spacing" as *;
-@use "../config/colors" as *;
-@use "../config/utils/container" as *;
-@use "../config/breakpoints" as *;
-@use "../components/button";
+@use '../config/typography' as *;
+@use '../config/spacing' as *;
+@use '../config/colors' as *;
+@use '../config/utils/container' as *;
+@use '../config/breakpoints' as *;
+@use '../components/button';
 
 .connexion {
   min-height: 100vh;

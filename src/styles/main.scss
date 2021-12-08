@@ -3,7 +3,7 @@
 @use 'config/breakpoints' as *;
 @use 'config/spacing' as *;
 @use 'config/colors' as *;
-@use "pages/connexion";
+@use 'pages/connexion';
 
 ::selection {
   color: #000;

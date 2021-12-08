@@ -13,7 +13,9 @@ export async function getUser() {
 }
 
 function setAuthKey({data}) {
-  window.localStorage.setItem(localAuthKey, data.access_token);
+  if (data?.access_token) {
+    window.localStorage.setItem(localAuthKey, data.access_token);
+  }
   return data;
 }
 
@@ -23,17 +25,13 @@ function removeAuthKey({data}) {
 }
 
 export function login(credentials) {
-  return axiosClient.post('login', credentials)
-    .then(setAuthKey)
-    .then(getUser)
+  return axiosClient.post('login', credentials).then(setAuthKey).then(getUser);
 }
 
 export function register(credentials) {
-  return axiosClient.post('register', credentials)
-    .then(setAuthKey);
+  return axiosClient.post('register', credentials).then(setAuthKey);
 }
 
 export function logout() {
-  return axiosClient.get('logout')
-    .then(removeAuthKey)
+  return axiosClient.get('logout').then(removeAuthKey);
 }

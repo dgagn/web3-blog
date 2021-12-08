@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/main.scss';
 import App from './app';
-import AppProviders from "./context";
+import AppProviders from './context';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -11,6 +11,5 @@ ReactDOM.render(
       <App />
     </AppProviders>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
-

@@ -1,5 +1,5 @@
-import {useAuth} from "../context/auth";
-import RegisterForm from "../components/register-form";
+import {useAuth} from '../context/auth';
+import RegisterForm from '../components/register-form';
 
 function RegisterPage() {
   const {register} = useAuth();
