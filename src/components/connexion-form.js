@@ -21,7 +21,7 @@ function ConnexionForm({onSubmit}) {
   }
 
   const getErrorMessage = useMemo(() => {
-    return isError
+    return isError && error?.status
       ? isClientError(error.status)
         ? `Le compte n'est pas valide`
         : isServerError(error.status)
