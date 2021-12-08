@@ -7,7 +7,7 @@ function ConnexionPage() {
   return (
     <div className="max-w-sm container-2xl connexion">
       <h1 className="connexion__title">Connexion</h1>
-      <p children="connexion__subtitle pt-sm">
+      <p className="connexion__subtitle pt-sm">
         Se connecter sur son compte pour le blog
       </p>
       <ConnexionForm onSubmit={login} />
