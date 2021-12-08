@@ -24,5 +24,10 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react'],
-  rules: {},
+  rules: {
+    'react/react-in-jsx-scope': 'off',
+    'require-jsdoc': 'warn',
+    'no-unused-vars': 'warn',
+    'react/prop-types': 'warn',
+  },
 };
