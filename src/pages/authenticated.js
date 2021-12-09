@@ -24,10 +24,10 @@ function AuthenticatedPage() {
 function AppRoutes() {
   return (
     <Routes>
-      <Route path="/articles" element={<ConnexionPage />} />
-      <Route path="/article/:articleId" element={<ConnexionPage />} />
-      <Route path="/connexion" element={<Navigate to="/" />} />
-      <Route path="/register" element={<Navigate to="/" />} />
+      <Route path="articles" element={<ConnexionPage />} />
+      <Route path="articles/:articleId" element={<ConnexionPage />} />
+      <Route path="connexion" element={<Navigate to="/" />} />
+      <Route path="register" element={<Navigate to="/" />} />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

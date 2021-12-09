@@ -1,0 +1,111 @@
+@use '../config/spacing' as *;
+@use '../config/typography' as *;
+@use '../config/breakpoints' as *;
+@use '../config/utils/container' as *;
+$ease: cubic-bezier(0.2, 1, 0.3, 1);
+
+@keyframes arrow-anim {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  5% {
+    transform: translateX(-0.1rem);
+  }
+  100% {
+    transform: translateX(1rem);
+    opacity: 0;
+  }
+}
+
+@keyframes arrow-fixed-anim {
+  5% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.articles {
+  margin-top: spacing-get(xl);
+  &__title {
+    position: relative;
+    margin-bottom: spacing-get(md);
+    font-size: typography-size-get(xxxl);
+    text-align: center;
+  }
+}
+
+.article {
+  @include container(xxs);
+
+  display: flex;
+  position: relative;
+  flex-wrap: wrap;
+  margin: spacing-get(md);
+  transition: opacity 0.3s $ease;
+  border-bottom: 1px solid transparentize(#ccc, 0.7);
+  cursor: pointer;
+  @include breakpoint(md) {
+    padding: spacing-get(xxl);
+  }
+
+  &__heading {
+    flex-basis: 70%;
+    padding-bottom: spacing-get(md);
+  }
+  &:last-child {
+    border-bottom: 0;
+  }
+  &:hover &__title {
+    text-decoration: underline;
+  }
+
+  &__date {
+    display: flex;
+    flex-basis: 100%;
+    justify-content: flex-start;
+    @include breakpoint('sm') {
+      flex-basis: 20%;
+    }
+  }
+  &__title {
+    flex-basis: 50%;
+    font-size: typography-size-get('2xl');
+  }
+  &__controls {
+    display: flex;
+    flex-basis: 0;
+    flex-grow: 1;
+    justify-content: flex-end;
+
+    svg {
+      height: auto;
+      overflow: visible;
+      cursor: pointer;
+
+      polygon,
+      path {
+        transition: all 0.5s $ease;
+      }
+      .article:hover polygon,
+      .article:hover path {
+        transition: all 1s $ease;
+      }
+
+      .article:hover & .arrow {
+        animation: arrow-anim 2.5s $ease infinite;
+      }
+      .article:hover & .arrow-fixed {
+        animation: arrow-fixed-anim 2.5s $ease infinite;
+      }
+    }
+  }
+  &__description {
+    margin-top: spacing-get(sm);
+  }
+}
