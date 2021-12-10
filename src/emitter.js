@@ -5,4 +5,4 @@ import {emitter} from './core/emitter';
  *
  * @type {Emitter}
  */
-export const emitterRegistration = emitter();
+export const globalEmitter = emitter();

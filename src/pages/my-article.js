@@ -23,8 +23,8 @@ function MyArticlePage() {
       <div className="container max-w-md pt-xl">
         <p>{currentArticle?.getBody()}</p>
         <button
-          className="link-fx-4 mt-lg"
-          onClick={() => navigate(`/articles/editable?page=${fromPage}`)}
+          className="link-fx-4 mt-lg mb-lg"
+          onClick={() => navigate(`/my-articles/?page=${fromPage}`)}
         >
           Retourner en arrière
         </button>

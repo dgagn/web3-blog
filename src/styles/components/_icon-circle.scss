@@ -1,0 +1,81 @@
+@use '../config/spacing' as *;
+@use '../config/colors' as *;
+
+:root {
+  --icon-circle-size: 28px;
+}
+
+.icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--icon-circle-size);
+  height: var(--icon-circle-size);
+  color: var(--icon-circle-icon);
+  background-color: var(--icon-circle-bg);
+  border-radius: 50%;
+  transition: all 0.3s var(--ease-out);
+  transform: scale(0.85);
+
+  &:hover {
+    color: var(--icon-circle-icon-hover);
+    background-color: var(--icon-circle-bg-hover);
+  }
+}
+
+.icon-circle[data-color='primary'] {
+  --icon-circle-bg: var(--color-primary-100);
+  --icon-circle-bg-hover: var(--color-primary-200);
+  --icon-circle-icon: var(--color-primary-400);
+  --icon-circle-icon-hover: var(--color-primary-500);
+}
+
+.icon-circle[data-color='warning'] {
+  --icon-circle-bg: var(--color-warning-100);
+  --icon-circle-bg-hover: var(--color-warning-200);
+  --icon-circle-icon: var(--color-warning-400);
+  --icon-circle-icon-hover: var(--color-warning-500);
+}
+
+.icon-circle[data-color='error'] {
+  --icon-circle-bg: var(--color-error-100);
+  --icon-circle-bg-hover: var(--color-error-200);
+  --icon-circle-icon: var(--color-error-400);
+  --icon-circle-icon-hover: var(--color-error-500);
+}
+
+.icon-circle[data-color='success'] {
+  --icon-circle-bg: var(--color-success-100);
+  --icon-circle-bg-hover: var(--color-success-200);
+  --icon-circle-icon: var(--color-success-400);
+  --icon-circle-icon-hover: var(--color-success-500);
+}
+
+// Dark mode
+body[data-theme='dark'] .icon-circle[data-color='primary'] {
+  --icon-circle-bg: var(--color-primary-200);
+  --icon-circle-bg-hover: var(--color-primary-300);
+  --icon-circle-icon: var(--color-primary-600);
+  --icon-circle-icon-hover: var(--color-primary-700);
+}
+
+body[data-theme='dark'] .icon-circle[data-color='warning'] {
+  --icon-circle-bg: var(--color-warning-200);
+  --icon-circle-bg-hover: var(--color-warning-300);
+  --icon-circle-icon: var(--color-warning-600);
+  --icon-circle-icon-hover: var(--color-warning-700);
+}
+
+body[data-theme='dark'] .icon-circle[data-color='error'] {
+  --icon-circle-bg: var(--color-error-200);
+  --icon-circle-bg-hover: var(--color-error-300);
+  --icon-circle-icon: var(--color-error-600);
+  --icon-circle-icon-hover: var(--color-error-700);
+}
+
+body[data-theme='dark'] .icon-circle[data-color='success'] {
+  --icon-circle-bg: var(--color-success-200);
+  --icon-circle-bg-hover: var(--color-success-300);
+  --icon-circle-icon: var(--color-success-600);
+  --icon-circle-icon-hover: var(--color-success-700);
+}

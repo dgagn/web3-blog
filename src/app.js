@@ -1,15 +1,17 @@
 import UnauthenticatedPage from './pages/unauthenticated';
 import {useAuth} from './context/auth';
 import AuthenticatedPage from './pages/authenticated';
-import {emitterRegistration} from './emitter';
-import RegistrationPopup from './components/toast';
+import {globalEmitter} from './emitter';
+import BlogPopup from './components/toast';
+import Modal from './components/modal';
 
 function App() {
   const {user} = useAuth();
 
   return (
     <>
-      <RegistrationPopup />
+      <Modal />
+      <BlogPopup />
       {user ? <AuthenticatedPage /> : <UnauthenticatedPage />}
     </>
   );

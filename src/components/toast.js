@@ -1,17 +1,22 @@
 import React, {useCallback, useState} from 'react';
 import {Toast} from 'react-bootstrap';
-import {emitterRegistration} from '../emitter';
+import {globalEmitter} from '../emitter';
 
-function RegistrationPopup() {
+function BlogPopup() {
   const [show, setShow] = useState(false);
   const [title, setTitle] = useState('');
   const toggle = useCallback(() => setShow(show => !show), []);
   const [body, setBody] = useState('');
 
-  emitterRegistration.on('registered', credentials => {
-    console.log(credentials);
+  globalEmitter.on('registered', credentials => {
     setTitle(credentials.name);
     setBody(`Félicitation ${credentials.name}, votre compte à bien été créer!`);
+    setShow(true);
+  });
+
+  globalEmitter.on('created-article', article => {
+    setTitle(article?.title);
+    setBody(`${article?.title} à bien été créer!`);
     setShow(true);
   });
 
@@ -30,4 +35,4 @@ function RegistrationPopup() {
   );
 }
 
-export default RegistrationPopup;
+export default BlogPopup;

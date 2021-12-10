@@ -6,6 +6,7 @@ import useArticles from '../hooks/use-articles';
 import NoArticles from '../components/no-articles';
 import Loading from './loading';
 import ErrorPage from './error';
+import ArticleEdit from '../components/article-edit';
 
 function MyArticlesPage() {
   const {isSuccess, articles, pageNumber, error, isError, isLoading} =
@@ -19,16 +20,12 @@ function MyArticlesPage() {
       {isSuccess && articles.length > 0 ? (
         articles.map(article => {
           return (
-            <Link
-              to={`/my-articles/${article.getId()}?from=${pageNumber}`}
+            <ArticleEdit
               key={article.getId()}
-            >
-              <Article
-                date={article.getDate()}
-                description={article.getShortBody()}
-                title={article.getTitle()}
-              />
-            </Link>
+              date={article.getDate()}
+              description={article.getShortBody()}
+              title={article.getTitle()}
+            />
           );
         })
       ) : (

@@ -8,7 +8,7 @@ import {
 import * as auth from '../services/auth';
 import Loading from '../pages/loading';
 import useHandleAsync from '../hooks/use-handle-async';
-import {emitterRegistration} from '../emitter';
+import {globalEmitter} from '../emitter';
 
 const AuthContext = createContext(undefined);
 AuthContext.displayName = 'AuthContext';
@@ -37,7 +37,7 @@ function AuthProvider({children}) {
     credentials =>
       auth.register(credentials).then(() => {
         login(credentials).then(() => {
-          emitterRegistration.emit('registered', credentials);
+          globalEmitter.emit('registered', credentials);
         });
       }),
     [login],

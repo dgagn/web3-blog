@@ -83,6 +83,13 @@ a {
     color: var(--color-primary-400);
     text-decoration: underline;
   }
+
+  &--danger {
+    color: var(--color-error-500);
+    &:hover {
+      color: var(--color-error-300);
+    }
+  }
 }
 
 .logo-size {

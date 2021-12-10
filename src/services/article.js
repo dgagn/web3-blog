@@ -12,3 +12,20 @@ export async function getMyArticlesAtPage(page) {
 export async function getArticle(articleId) {
   return (await axiosClient.get(`articles/${articleId}`)).data;
 }
+
+function invalidateCache(endpoint) {
+  for (const key in sessionStorage) {
+    if (key.includes(endpoint)) {
+      sessionStorage.removeItem(key);
+    }
+  }
+}
+
+export async function createArticle(article) {
+  invalidateCache('articles');
+  return (await axiosClient.post(`articles`, article)).data;
+}
+
+export async function modifyArticle(id, modified) {
+  invalidateCache('articles');
+}
