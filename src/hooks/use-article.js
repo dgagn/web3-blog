@@ -5,8 +5,6 @@ import ArticleModel from '../model/article-model';
 import {isValid} from '../services/cache';
 import * as article from '../services/article';
 import {isClientError} from '../services/status';
-import NotFoundPage from '../pages/not-found';
-import Loading from '../pages/loading';
 
 function useArticle(endpoint) {
   const {articleId} = useParams();
@@ -37,7 +35,7 @@ function useArticle(endpoint) {
     }
 
     run(article.getArticle(articleId));
-  }, [articleId, location.search, run, numberArticleId, setData]);
+  }, [articleId, location.search, run, numberArticleId, setData, endpoint]);
 
   return {
     currentArticle,
