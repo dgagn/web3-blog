@@ -1,53 +1,18 @@
-import {useHandleAsync} from '../context/auth';
+import useHandleAsync from '../hooks/use-handle-async';
 import FormInput from './form-input';
 import SpinnerButton from './spinner-button';
 import React, {useEffect, useMemo, useState} from 'react';
 import {isClientError} from '../services/status';
-
-function validatePasswords(firstPass, secondPass) {
-  return firstPass === secondPass;
-}
+import useRegister from '../hooks/use-register';
 
 function RegisterForm({onSubmit}) {
-  const {run, isLoading, isError, error} = useHandleAsync();
-
-  const [isPassMatch, setIsPassMatch] = useState(true);
-  const [isEmailError, setIsEmailError] = useState('');
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    const {
-      confirm: {value: confirm},
-      password: {value: password},
-    } = e.target.elements;
-
-    const isValid = validatePasswords(confirm, password);
-    setIsPassMatch(isValid);
-    if (!isValid) {
-      setIsEmailError('');
-      return;
-    }
-    const {
-      email: {value: email},
-      name: {value: name},
-    } = e.target.elements;
-
-    run(onSubmit({email, name, password}));
-  }
-
-  const samePassMatchError = useMemo(() => {
-    return !isPassMatch
-      ? `Le mots de passe n'est pas le même que la confirmation`
-      : '';
-  }, [isPassMatch]);
-
-  useEffect(() => {
-    if (isClientError(error?.status) && error?.data?.errors?.email) {
-      setIsEmailError(`Le courriel que vous avez entré existe déjà.`);
-    } else {
-      setIsEmailError('');
-    }
-  }, [error]);
+  const {
+    handleSubmit,
+    isEmailError,
+    isPassMatch,
+    samePassMatchError,
+    isLoading,
+  } = useRegister(onSubmit);
 
   return (
     <form className="container-lg max-w-sm mt-lg" onSubmit={handleSubmit}>

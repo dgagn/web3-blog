@@ -72,3 +72,25 @@ a {
 .clip {
   @include clip-path(bottom);
 }
+
+.link {
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  color: var(--color-primary-500);
+
+  &:hover {
+    cursor: pointer;
+    color: var(--color-primary-400);
+    text-decoration: underline;
+  }
+}
+
+.logo-size {
+  display: flex;
+  align-items: center;
+  @include breakpoint('md', 'not all') {
+    justify-content: center;
+  }
+  width: 118px;
+  height: 64px;
+}

@@ -9,7 +9,6 @@ function ErrorPage({error}) {
       </p>
       <p>Si vous avez cette erreur, essayer de rafraichir la page.</p>
       <p>{error && JSON.stringify(error)}</p>
-      <p className="mt-sm">- Dany Gagnon</p>
     </div>
   );
 }

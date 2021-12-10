@@ -1,34 +1,11 @@
-import {useHandleAsync} from '../context/auth';
-import React, {useMemo} from 'react';
-import {isClientError, isServerError} from '../services/status';
+import React from 'react';
 import FormInput from './form-input';
 import SpinnerButton from './spinner-button';
+import useConnexion from '../hooks/use-connexion';
 
 function ConnexionForm({onSubmit}) {
-  const {run, isLoading, isError, error} = useHandleAsync();
-
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (isLoading) return;
-    const {email, password} = e.target.elements;
-    run(
-      onSubmit({
-        remember_me: true,
-        email: email.value,
-        password: password.value,
-      }),
-    );
-  }
-
-  const getErrorMessage = useMemo(() => {
-    return isError && error?.status
-      ? isClientError(error.status)
-        ? `Le compte n'est pas valide`
-        : isServerError(error.status)
-        ? `Le serveur n'est pas valide`
-        : `Une erreur c'est produit`
-      : ``;
-  }, [isError, error]);
+  const {handleSubmit, isError, getErrorMessage, isLoading} =
+    useConnexion(onSubmit);
 
   return (
     <form className="container-lg max-w-sm mt-lg" onSubmit={handleSubmit}>

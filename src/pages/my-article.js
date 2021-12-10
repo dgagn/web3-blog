@@ -3,8 +3,8 @@ import {useNavigate} from 'react-router-dom';
 import useArticle from '../hooks/use-article';
 import NotFoundPage from './not-found';
 
-function ArticlePage() {
-  const {currentArticle, isError, fromPage} = useArticle('articles');
+function MyArticlePage() {
+  const {currentArticle, isError, fromPage} = useArticle('articles/editable');
   const navigate = useNavigate();
 
   if (isError) {
@@ -24,7 +24,7 @@ function ArticlePage() {
         <p>{currentArticle?.getBody()}</p>
         <button
           className="link-fx-4 mt-lg"
-          onClick={() => navigate(`/articles?page=${fromPage}`)}
+          onClick={() => navigate(`/articles/editable?page=${fromPage}`)}
         >
           Retourner en arrière
         </button>
@@ -33,4 +33,4 @@ function ArticlePage() {
   );
 }
 
-export default ArticlePage;
+export default MyArticlePage;

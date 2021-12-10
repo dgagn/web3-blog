@@ -1,15 +1,17 @@
-import {Route, Routes} from 'react-router-dom';
+import {Route, Routes, Link} from 'react-router-dom';
 import ConnexionPage from '../pages/connexion';
 import NotFoundPage from '../pages/not-found';
 import RegisterPage from './register';
 import ArticlesPage from './articles';
 import TopBar from '../components/top-bar';
 import ArticlePage from './article';
+import Nav from '../components/nav';
 
 function UnauthenticatedPage() {
   return (
     <>
       <TopBar />
+      <Nav />
       <AppRoutes />
     </>
   );

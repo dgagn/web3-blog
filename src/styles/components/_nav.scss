@@ -1,0 +1,25 @@
+@use '../config/spacing' as *;
+@use '../config/breakpoints' as *;
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: spacing-get(xl);
+    align-items: center;
+  }
+
+  @include breakpoint(md, 'not all') {
+    flex-direction: column;
+
+    &__list {
+      flex-direction: column;
+      margin-top: spacing-get(lg);
+      text-align: center;
+    }
+  }
+}
