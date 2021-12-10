@@ -30,7 +30,6 @@ function axiosClient() {
 }
 
 function responseHandler(response) {
-  console.log(response);
   if (
     response.config.method.toUpperCase() === 'GET' &&
     response.config.url &&
@@ -43,10 +42,8 @@ function responseHandler(response) {
 }
 
 function errorHandler(error) {
-  console.log(error);
-  console.log(error?.headers);
-  console.log(error?.response);
   if (error.headers?.cached) {
+    // todo: remove logs
     console.log('got cached data in response, serving it directly');
     return Promise.resolve(error);
   }
@@ -54,7 +51,6 @@ function errorHandler(error) {
 }
 
 function requestHandler(request) {
-  console.log(request);
   if (request.method.toUpperCase() === 'GET') {
     const isValidResponse = cache.isValid(request.url || '');
     if (isValidResponse?.isValid) {

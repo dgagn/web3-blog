@@ -3,7 +3,23 @@
 @use 'config/breakpoints' as *;
 @use 'config/spacing' as *;
 @use 'config/colors' as *;
+@use 'config/utils/container' as *;
 @use 'pages/connexion';
+
+@mixin clip-path($name: 'default', $offset: 50px) {
+  @if $name == 'default' {
+    clip-path: polygon(
+      0% 0%,
+      100% $offset,
+      100% 100%,
+      0% calc(100% - #{$offset})
+    );
+  } @else if $name == 'bottom' {
+    clip-path: polygon(0% 0%, 100% 0%, 100% calc(100% - #{$offset}), 0% 100%);
+  } @else {
+    @error "Invalid clip-path name";
+  }
+}
 
 ::selection {
   color: #000;
@@ -28,4 +44,31 @@
 .spinner {
   width: 10em;
   height: 10em;
+}
+
+a {
+  all: unset;
+  &:hover {
+    all: unset;
+  }
+}
+
+.article-page {
+  &__header {
+    @include clip-path(bottom);
+    padding: spacing-get('2xl');
+    background-color: color-get('contrast', 100);
+  }
+}
+
+.bg-blur {
+  @include breakpoint(sm) {
+    padding: spacing-get(xl);
+  }
+  background-color: transparentize(color-pure-get('contrast', 800), 0.7);
+  border-radius: 16px;
+}
+
+.clip {
+  @include clip-path(bottom);
 }

@@ -4,15 +4,29 @@ import {useHandleAsync} from '../context/auth';
 import {getArticlesAtPage} from '../services/article';
 import Loading from './loading';
 import ErrorPage from './error';
+import {Link, useLocation} from 'react-router-dom';
 
 function ArticlesPage() {
-  const {data, run, isLoading, isSuccess, isError, error} = useHandleAsync();
+  const {data, run, isLoading, isSuccess, isError, error, isIdle} =
+    useHandleAsync();
+  const location = useLocation();
+  const [pageNumber, setPageNumber] = useState(undefined);
 
   useEffect(() => {
-    run(getArticlesAtPage(1));
-  }, []);
+    if (!pageNumber) return;
+    run(getArticlesAtPage(pageNumber));
+  }, [pageNumber, run]);
 
-  if (isLoading) return <Loading />;
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const page = params.get('page');
+    const numberPage = Number(page);
+    const validPageNumber =
+      numberPage <= 0 || Number.isNaN(numberPage) ? 1 : numberPage;
+    setPageNumber(validPageNumber);
+  }, [location.search]);
+
+  if (isLoading || isIdle) return <Loading />;
   else if (isError) return <ErrorPage error={error} />;
 
   return (
@@ -25,12 +39,16 @@ function ArticlesPage() {
                 ? splitBody.slice(0, 50).join(' ') + '...'
                 : article.body;
             return (
-              <Article
+              <Link
+                to={`/articles/${article.id}?from=${pageNumber}`}
                 key={article.id}
-                date={article.created_at.substr(0, 11)}
-                description={body}
-                title={article.title}
-              />
+              >
+                <Article
+                  date={article.created_at.substr(0, 11)}
+                  description={body}
+                  title={article.title}
+                />
+              </Link>
             );
           })
         : null}

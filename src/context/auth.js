@@ -18,7 +18,9 @@ function useSafeFunction(dispatch) {
   const mounted = useRef(false);
   useLayoutEffect(() => {
     mounted.current = true;
-    return () => (mounted.current = false);
+    return () => {
+      mounted.current = false;
+    };
   }, []);
   return useCallback(
     (...args) => (mounted.current ? dispatch(...args) : void 0),
@@ -46,6 +48,7 @@ export function useHandleAsync(initialState) {
     error => safeSetState({error, status: 'rejected'}),
     [safeSetState],
   );
+
   const run = useCallback(
     promise => {
       if (!promise || !promise.then)
@@ -57,7 +60,6 @@ export function useHandleAsync(initialState) {
           return data;
         },
         error => {
-          console.log('err');
           setError(error);
           return Promise.reject(error);
         },

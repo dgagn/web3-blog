@@ -3,11 +3,11 @@ const cacheInterval = 2 * 60 * 1000;
 
 export function store(key, value) {
   const finalValue = `${value}${localStorageSeperator}${Date.now().toString()}`;
-  localStorage.setItem(key, finalValue);
+  sessionStorage.setItem(key, finalValue);
 }
 
 export function isValid(key) {
-  const value = localStorage.getItem(key);
+  const value = sessionStorage.getItem(key);
   if (value === null) return {isValid: false};
   const values = value.split(localStorageSeperator);
   const timestamp = Number(values[1]);

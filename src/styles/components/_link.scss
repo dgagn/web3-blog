@@ -269,7 +269,7 @@
     clip-path: polygon(0% 0%, 1px 0%, 1px 100%, 0% 100%);
     color: var(--color-bg);
     content: attr(data-link-fx-clone);
-    background-color: var(--color-contrast-900);
+    background-color: transparentize(color-pure-get('primary', 900), 0.8);
     transition: clip-path 0.3s var(--ease-out);
     will-change: clip-path;
   }

@@ -28,7 +28,7 @@ function ConnexionForm({onSubmit}) {
         ? `Le serveur n'est pas valide`
         : `Une erreur c'est produit`
       : ``;
-  }, [error]);
+  }, [isError, error]);
 
   return (
     <form className="container-lg max-w-sm mt-lg" onSubmit={handleSubmit}>
