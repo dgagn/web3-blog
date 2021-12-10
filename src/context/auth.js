@@ -8,6 +8,7 @@ import {
 import * as auth from '../services/auth';
 import Loading from '../pages/loading';
 import useHandleAsync from '../hooks/use-handle-async';
+import {emitterRegistration} from '../emitter';
 
 const AuthContext = createContext(undefined);
 AuthContext.displayName = 'AuthContext';
@@ -33,8 +34,13 @@ function AuthProvider({children}) {
     [setData],
   );
   const register = useCallback(
-    credentials => auth.register(credentials).then(user => setData(user)),
-    [setData],
+    credentials =>
+      auth.register(credentials).then(() => {
+        login(credentials).then(() => {
+          emitterRegistration.emit('registered', credentials);
+        });
+      }),
+    [login],
   );
 
   const logout = useCallback(() => {

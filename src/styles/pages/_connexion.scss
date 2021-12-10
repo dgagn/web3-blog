@@ -5,13 +5,18 @@
 @use '../config/breakpoints' as *;
 @use '../components/button';
 
+html {
+  overflow-y: scroll;
+}
+
 .connexion {
-  min-height: 100vh;
   display: flex;
+  padding-top: spacing-get('lg');
+  padding-bottom: spacing-get('xl');
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: calc(100vh - 140px);
 
   &__title {
     font-size: typography-size-get('4xl');

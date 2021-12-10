@@ -23,7 +23,7 @@ function ArticlePage() {
       <div className="container max-w-md pt-xl">
         <p>{currentArticle?.getBody()}</p>
         <button
-          className="link-fx-4 mt-lg"
+          className="link mt-lg mb-lg"
           onClick={() => navigate(`/articles?page=${fromPage}`)}
         >
           Retourner en arrière

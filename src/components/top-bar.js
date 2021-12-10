@@ -1,6 +1,5 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import {useLocation} from 'react-router-dom';
 import useTopbar from '../hooks/use-topbar';
 
 function TopBar() {

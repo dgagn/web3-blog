@@ -7,7 +7,7 @@ function validatePasswords(firstPass, secondPass) {
 }
 
 function useRegister(fn) {
-  const {run, isLoading, error} = useHandleAsync();
+  const {run, isLoading, error, isSuccess} = useHandleAsync();
 
   const [isPassMatch, setIsPassMatch] = useState(true);
   const [isEmailError, setIsEmailError] = useState('');
@@ -56,6 +56,7 @@ function useRegister(fn) {
     isPassMatch,
     samePassMatchError,
     isLoading,
+    isSuccess,
   };
 }
 

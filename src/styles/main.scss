@@ -94,3 +94,14 @@ a {
   width: 118px;
   height: 64px;
 }
+
+.list {
+  li {
+    padding-bottom: spacing-get(sm);
+
+    &::before {
+      margin-right: spacing-get(sm);
+      content: '🔹';
+    }
+  }
+}

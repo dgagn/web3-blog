@@ -41,12 +41,13 @@ $ease: cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 .article {
-  @include container(xxs);
-
+  @include container(md);
+  margin-left: 0;
+  margin-right: 0;
   display: flex;
   position: relative;
   flex-wrap: wrap;
-  margin: spacing-get(md);
+  margin-bottom: spacing-get(md);
   transition: opacity 0.3s $ease;
   border-bottom: 1px solid transparentize(#ccc, 0.7);
   cursor: pointer;

@@ -1,8 +1,7 @@
 import useHandleAsync from '../hooks/use-handle-async';
 import FormInput from './form-input';
 import SpinnerButton from './spinner-button';
-import React, {useEffect, useMemo, useState} from 'react';
-import {isClientError} from '../services/status';
+import React from 'react';
 import useRegister from '../hooks/use-register';
 
 function RegisterForm({onSubmit}) {

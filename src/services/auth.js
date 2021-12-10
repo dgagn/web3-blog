@@ -29,7 +29,7 @@ export function login(credentials) {
 }
 
 export function register(credentials) {
-  return axiosClient.post('register', credentials).then(setAuthKey);
+  return axiosClient.post('register', credentials);
 }
 
 export function logout() {

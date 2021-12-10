@@ -1,15 +1,22 @@
-import React from 'react';
-import {Link} from 'react-router-dom';
+import React, {useCallback} from 'react';
+import {Link, useNavigate} from 'react-router-dom';
+import UserLogout from './user-logout';
 
 function Nav({user, logout, links}) {
+  const navigate = useNavigate();
+  const closeSession = useCallback(() => {
+    logout();
+    navigate('/');
+    sessionStorage.clear();
+  }, [logout, navigate]);
   return (
-    <div className="container max-w-md mt-xl pb-lg">
+    <div className="container max-w-md mt-md pb-md">
       <nav className="nav gap-y-md">
         <Link to="/">
           <h3 className="logo logo-size pointer">Blog</h3>
         </Link>
         <ul className="nav__list gap-y-md">
-          {links.map(link => (
+          {links?.map(link => (
             <li key={link.name}>
               <Link to={link.route}>
                 <button className="button-reset text-bg-fx text-bg-fx--scale-y">
@@ -18,10 +25,9 @@ function Nav({user, logout, links}) {
               </Link>
             </li>
           ))}
-          <li>
-            <span className="mr-md">Dany Gagnon</span>
-            <button className="button-reset link-fx-4">logout</button>
-          </li>
+          {user && logout && (
+            <UserLogout logout={closeSession} name={user?.name} />
+          )}
         </ul>
       </nav>
     </div>

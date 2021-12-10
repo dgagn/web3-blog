@@ -8,33 +8,22 @@ import MyArticlePage from './my-article';
 import MyArticlesCreate from './my-articles-create';
 import TopBar from '../components/top-bar';
 import Nav from '../components/nav';
+import Welcome from './welcome';
+import authentifiedLinks from '../nav/authentified-links';
 
 function AuthenticatedPage() {
   const {logout, user} = useAuth();
-  const links = [
-    {
-      name: 'Accueil',
-      route: '/',
-    },
-    {
-      name: 'Articles',
-      route: '/articles',
-    },
-    {
-      name: 'Mes articles',
-      route: '/my-articles',
-    },
-  ];
+
   return (
     <div>
       <TopBar />
-      <Nav links={links} user={user} logout={logout} />
-      <AppRoutes />
+      <Nav links={authentifiedLinks} user={user} logout={logout} />
+      <AppRoutes user={user} />
     </div>
   );
 }
 
-function AppRoutes() {
+function AppRoutes({user}) {
   return (
     <Routes>
       <Route path="articles" element={<ArticlesPage />} />
@@ -44,6 +33,10 @@ function AppRoutes() {
       <Route path="my-articles/:articleId" element={<MyArticlePage />} />
       <Route path="connexion" element={<Navigate to="/" />} />
       <Route path="register" element={<Navigate to="/" />} />
+      <Route
+        path="/"
+        element={<Welcome name={user?.name} email={user?.email} />}
+      />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );

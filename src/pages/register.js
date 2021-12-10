@@ -1,9 +1,16 @@
 import {useAuth} from '../context/auth';
-import Register from '../components/register';
+import RegisterForm from '../components/register-form';
+import React from 'react';
 
 function RegisterPage() {
   const {register} = useAuth();
-  return <Register register={register} />;
+  return (
+    <div className="max-w-sm container-2xl connexion">
+      <h1 className="connexion__title">S&apos;inscrire</h1>
+      <p className="connexion__subtitle pt-sm">S&apos;inscrire sur le blog</p>
+      <RegisterForm onSubmit={register} />
+    </div>
+  );
 }
 
 export default RegisterPage;
