@@ -27,6 +27,7 @@ module.exports = {
   rules: {
     'react/react-in-jsx-scope': 'off',
     'require-jsdoc': 'off',
+    'no-unused-vars': 'warn',
     'react/prop-types': 'off',
   },
 };
