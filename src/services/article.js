@@ -28,4 +28,10 @@ export async function createArticle(article) {
 
 export async function modifyArticle(id, modified) {
   invalidateCache('articles');
+  return (await axiosClient.put(`articles`, modified)).data;
+}
+
+export async function deleteArticle(id) {
+  invalidateCache('articles');
+  return (await axiosClient.delete(`articles/${id}`)).data;
 }

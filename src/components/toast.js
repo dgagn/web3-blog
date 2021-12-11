@@ -20,6 +20,18 @@ function BlogPopup() {
     setShow(true);
   });
 
+  globalEmitter.on('edit-article', ({old, title}) => {
+    setTitle(title);
+    setBody(`${old} à bien été modifié${old !== title ? ' à ' + title : ''} !`);
+    setShow(true);
+  });
+
+  globalEmitter.on('delete-article', title => {
+    setTitle(title);
+    setBody(`L’article « ${title} » a bien été supprimé.`);
+    setShow(true);
+  });
+
   return (
     <Toast
       className="top-md left-md position-absolute bg-primary-100"

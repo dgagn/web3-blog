@@ -21,6 +21,10 @@ function useHandleAsync(initialState) {
     error => safeSetState({error, status: 'rejected'}),
     [safeSetState],
   );
+  const setLoading = useCallback(
+    () => safeSetState({status: 'pending'}),
+    [safeSetState],
+  );
 
   const run = useCallback(
     promise => {
@@ -51,6 +55,7 @@ function useHandleAsync(initialState) {
     data,
     run,
     error,
+    setLoading,
   };
 }
 

@@ -6,6 +6,7 @@ import useHandleAsync from '../hooks/use-handle-async';
 import {createArticle} from '../services/article';
 import {globalEmitter} from '../emitter';
 import {useNavigate} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 
 function MyArticlesCreate() {
   const {run, isLoading, isSuccess, data} = useHandleAsync();
@@ -40,7 +41,12 @@ function MyArticlesCreate() {
       <form className="container-lg max-w-sm mt-lg" onSubmit={onSubmit}>
         <FormInput id="title">Titre</FormInput>
         <FormTextArea id="body">Contenu</FormTextArea>
-        <SpinnerButton isLoading={isLoading}>Créer</SpinnerButton>
+        <SpinnerButton className="mb-xl" isLoading={isLoading}>
+          Créer
+        </SpinnerButton>
+        <Link className="link text-center block" to="/my-articles">
+          Retour
+        </Link>
       </form>
     </div>
   );

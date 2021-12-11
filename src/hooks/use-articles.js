@@ -2,10 +2,20 @@ import {useLocation} from 'react-router-dom';
 import React, {useEffect, useMemo, useState} from 'react';
 import useHandleAsync from './use-handle-async';
 import ArticleModel from '../model/article-model';
+import {globalEmitter} from '../emitter';
 
 export function useArticles(runFn) {
-  const {data, run, isLoading, isSuccess, isError, error, isIdle} =
-    useHandleAsync();
+  const {
+    data,
+    run,
+    isLoading,
+    isSuccess,
+    isError,
+    error,
+    isIdle,
+    setData,
+    setLoading,
+  } = useHandleAsync();
   const location = useLocation();
   const [pageNumber, setPageNumber] = useState(undefined);
 
@@ -34,6 +44,9 @@ export function useArticles(runFn) {
     isError,
     error,
     isLoading: isLoading || isIdle,
+    run,
+    setData,
+    setLoading,
   };
 }
 

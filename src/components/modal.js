@@ -1,15 +1,26 @@
-import React, {useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import IconCircle from './icon-circle';
+import FormInput from './form-input';
+import FormTextArea from './form-textarea';
+import SpinnerButton from './spinner-button';
 
-function Modal() {
-  const [isOpen, setIsOpen] = useState(true);
-  return isOpen ? (
-    <div className="modal">
+function Modal({
+  open,
+  setOpen,
+  title,
+  description,
+  onSubmit,
+  isLoading,
+  setTitle,
+  setBody,
+}) {
+  return open ? (
+    <form className="modal" onSubmit={onSubmit}>
       <div className="content rounded relative p-sm@!sm">
         <IconCircle
           className="absolute top-lg right-xl pointer"
           color="error"
-          onClick={() => setIsOpen(state => !state)}
+          onClick={() => setOpen(state => !state)}
         >
           𝑥
         </IconCircle>
@@ -22,8 +33,24 @@ function Modal() {
         <p className="mt-sm">
           Les modifications à l&apos;article sont définitive.
         </p>
+        <FormInput
+          className="pt-md mb-lg"
+          id="modify_title"
+          value={title}
+          onChange={e => setTitle(e.target.value)}
+        >
+          Modifier le titre
+        </FormInput>
+        <FormTextArea
+          id="modify_body"
+          value={description}
+          onChange={e => setBody(e.target.value)}
+        >
+          Modifier le contenu
+        </FormTextArea>
+        <SpinnerButton isLoading={isLoading}>Modifier</SpinnerButton>
       </div>
-    </div>
+    </form>
   ) : null;
 }
 

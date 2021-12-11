@@ -10,6 +10,7 @@ function IconCircle({
       onClick={onClick}
       data-color={color}
       aria-label={`Un bouton avec une couleur ${color}.`}
+      type="button"
     >
       {children}
     </button>

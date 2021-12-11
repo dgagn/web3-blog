@@ -73,6 +73,12 @@ a {
   @include clip-path(bottom);
 }
 
+.block {
+  &:hover {
+    display: block;
+  }
+}
+
 .link {
   cursor: pointer;
   transition: 0.3s ease-in-out;
@@ -111,4 +117,8 @@ a {
       content: '🔹';
     }
   }
+}
+
+.max-h-md {
+  max-height: 130px;
 }
