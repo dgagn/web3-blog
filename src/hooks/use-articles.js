@@ -1,8 +1,7 @@
 import {useLocation} from 'react-router-dom';
-import React, {useEffect, useMemo, useState} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 import useHandleAsync from './use-handle-async';
 import ArticleModel from '../model/article-model';
-import {globalEmitter} from '../emitter';
 
 export function useArticles(runFn) {
   const {
@@ -47,6 +46,7 @@ export function useArticles(runFn) {
     run,
     setData,
     setLoading,
+    data,
   };
 }
 

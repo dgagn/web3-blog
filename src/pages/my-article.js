@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useCallback} from 'react';
 import {useNavigate} from 'react-router-dom';
 import useArticle from '../hooks/use-article';
 import NotFoundPage from './not-found';
@@ -7,10 +7,14 @@ function MyArticlePage() {
   const {currentArticle, isError, fromPage} = useArticle('articles/editable');
   const navigate = useNavigate();
 
-  if (isError) {
-    return <NotFoundPage />;
-  }
-  return (
+  const returnHome = useCallback(
+    () => navigate(`/my-articles/?page=${fromPage}`),
+    [],
+  );
+
+  return isError ? (
+    <NotFoundPage />
+  ) : (
     <>
       <div className="p-2xl text-center bg-contrast-900 clip">
         <div className="blur p-xl max-w-md mx-auto my-auto bg-blur">
@@ -22,10 +26,7 @@ function MyArticlePage() {
       </div>
       <div className="container max-w-md pt-xl">
         <p>{currentArticle?.getBody()}</p>
-        <button
-          className="link-fx-4 mt-lg mb-lg"
-          onClick={() => navigate(`/my-articles/?page=${fromPage}`)}
-        >
+        <button className="link-fx-4 mt-lg mb-lg" onClick={returnHome}>
           Retourner en arrière
         </button>
       </div>

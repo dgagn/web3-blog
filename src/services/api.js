@@ -15,11 +15,7 @@ function axiosClient() {
       'Content-Type': 'application/json',
     },
   });
-  instance.interceptors.request.use(config => {
-    const token = getAuthToken();
-    config.headers.Authorization = token ? `Bearer ${token}` : undefined;
-    return config;
-  });
+  instance.interceptors.request.use(request => authHandler(request));
   instance.interceptors.request.use(request => requestHandler(request));
   instance.interceptors.response.use(
     response => responseHandler(response),
@@ -29,22 +25,24 @@ function axiosClient() {
   return instance;
 }
 
+function authHandler(request) {
+  const token = getAuthToken();
+  request.headers.Authorization = token ? `Bearer ${token}` : undefined;
+  return request;
+}
+
 function responseHandler(response) {
   if (
     response.config.method.toUpperCase() === 'GET' &&
     response.config.url &&
     !isURLInWhiteList(response.config.url)
-  ) {
-    console.log('storing in cache');
+  )
     cache.store(response.config.url, JSON.stringify(response.data));
-  }
   return response;
 }
 
 function errorHandler(error) {
   if (error.headers?.cached) {
-    // todo: remove logs
-    console.log('got cached data in response, serving it directly');
     return Promise.resolve(error);
   }
   return Promise.reject(error?.response);
@@ -54,7 +52,6 @@ function requestHandler(request) {
   if (request.method.toUpperCase() === 'GET') {
     const isValidResponse = cache.isValid(request.url || '');
     if (isValidResponse?.isValid) {
-      console.log('serving cached data');
       request.headers.cached = true;
       request.data = JSON.parse(isValidResponse.value || '{}');
       return Promise.reject(request);

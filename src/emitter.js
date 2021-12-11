@@ -1,7 +1,7 @@
 import {emitter} from './core/emitter';
 
 /**
- * The emitter for a registration.
+ * The emitter for the toasts.
  *
  * @type {Emitter}
  */

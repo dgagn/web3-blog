@@ -1,4 +1,4 @@
-import React, {useEffect, useMemo, useState} from 'react';
+import {useEffect, useMemo, useState} from 'react';
 import {useLocation, useParams} from 'react-router-dom';
 import useHandleAsync from './use-handle-async';
 import ArticleModel from '../model/article-model';
@@ -11,7 +11,6 @@ function useArticle(endpoint) {
   const {run, data, isLoading, isError, error, setData} = useHandleAsync();
   const numberArticleId = Number(articleId);
   const location = useLocation();
-
   const [fromPage, setFromPage] = useState(1);
   const currentArticle = useMemo(() => new ArticleModel(data?.data), [data]);
 

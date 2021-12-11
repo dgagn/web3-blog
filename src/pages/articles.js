@@ -5,14 +5,34 @@ import {Link} from 'react-router-dom';
 import useArticles from '../hooks/use-articles';
 import Loading from './loading';
 import ErrorPage from './error';
+import NotFoundPage from './not-found';
+import usePagination from '../hooks/use-pagination';
+import Pagination from '../components/pagination';
 
 function ArticlesPage() {
-  const {isSuccess, articles, pageNumber, isError, isLoading, error} =
+  const {isSuccess, articles, pageNumber, isError, isLoading, error, data} =
     useArticles(getArticlesAtPage);
+
+  const {
+    maxPage,
+    total,
+    prevPage,
+    navigateFirstPage,
+    navigateLastPage,
+    navigateNextPage,
+    navigatePrevPage,
+    nextPage,
+  } = usePagination('/articles', data, pageNumber);
+
+  if (pageNumber > maxPage) return <NotFoundPage />;
   if (isLoading) return <Loading />;
   else if (isError) return <ErrorPage error={error} />;
+
   return (
     <div className="articles container max-w-md">
+      <p className="text-contrast-600 mb-xl">
+        {total} {total > 1 ? 'articles' : 'article'} au totals
+      </p>
       {isSuccess
         ? articles.map(article => {
             return (
@@ -29,6 +49,14 @@ function ArticlesPage() {
             );
           })
         : null}
+      <Pagination
+        navigateFirstPage={navigateFirstPage}
+        navigateLastPage={navigateLastPage}
+        navigateNextPage={navigateNextPage}
+        nextPage={nextPage}
+        prevPage={prevPage}
+        navigatePrevPage={navigatePrevPage}
+      />
     </div>
   );
 }
