@@ -1,11 +1,10 @@
-import React, {useCallback, useEffect, useReducer, useState} from 'react';
+import React from 'react';
 import {getMyArticlesAtPage} from '../services/article';
 import useArticles from '../hooks/use-articles';
 import NoArticles from '../components/no-articles';
 import Loading from './loading';
 import ErrorPage from './error';
 import ArticleEdit from '../components/article-edit';
-import {globalEmitter} from '../emitter';
 import {Link} from 'react-router-dom';
 
 function MyArticlesPage() {
@@ -19,8 +18,6 @@ function MyArticlesPage() {
     setData,
     setLoading,
   } = useArticles(getMyArticlesAtPage);
-  const forceUpdate = useReducer(() => ({}))[1];
-
   if (isLoading) return <Loading />;
   else if (isError) return <ErrorPage error={error} />;
 
