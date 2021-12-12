@@ -1,6 +1,12 @@
 import {useCallback, useReducer, useRef} from 'react';
 import useSafeFunction from './use-safe-function';
 
+/**
+ * Main function to handle async calls.
+ *
+ * @param {*} initialState the initial state
+ * @return {{isLoading: boolean, isError: boolean, data: *, setData: (function(*): *), setLoading: (function(): *), setError: (function(*): *), isIdle: boolean, run: (function(*): *), error: *, isSuccess: boolean}}
+ */
 function useHandleAsync(initialState) {
   const ref = useRef({
     status: 'idle',

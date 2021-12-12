@@ -1,5 +1,10 @@
 import React from 'react';
 
+/**
+ * The arrow pointing in articles.
+ *
+ * @return {JSX.Element} the arrow pointing
+ */
 function ArrowPointing() {
   return (
     <svg

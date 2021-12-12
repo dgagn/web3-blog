@@ -13,6 +13,12 @@ import {globalEmitter} from '../emitter';
 const AuthContext = createContext(undefined);
 AuthContext.displayName = 'AuthContext';
 
+/**
+ * The auth context provider.
+ *
+ * @return {JSX.Element} the aut context provider
+ * @constructor
+ */
 function AuthProvider({children}) {
   const {
     data: user,
@@ -72,6 +78,11 @@ function AuthProvider({children}) {
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
+/**
+ * A hook to be able to use the auth module.
+ *
+ * @return {*} the context
+ */
 function useAuth() {
   const context = useContext(AuthContext);
   if (context === undefined)

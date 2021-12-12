@@ -3,6 +3,11 @@ import {useAuth} from './context/auth';
 import AuthenticatedPage from './pages/authenticated';
 import BlogPopup from './components/toast';
 
+/**
+ * Returns the main app component.
+ *
+ * @return {JSX.Element} the main app component
+ */
 function App() {
   const {user} = useAuth();
 

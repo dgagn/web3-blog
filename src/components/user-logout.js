@@ -1,5 +1,11 @@
 import React from 'react';
 
+/**
+ * The logout user button with user name
+ *
+ * @return {JSX.Element} the logout user button with user name
+ * @constructor
+ */
 function UserLogout({name, logout}) {
   return (
     <li>

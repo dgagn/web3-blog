@@ -1,9 +1,15 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React from 'react';
 import IconCircle from './icon-circle';
 import FormInput from './form-input';
 import FormTextArea from './form-textarea';
 import SpinnerButton from './spinner-button';
 
+/**
+ * The modal for editing article
+ *
+ * @return {JSX.Element|null} the modal for editing article
+ * @constructor
+ */
 function Modal({
   open,
   setOpen,

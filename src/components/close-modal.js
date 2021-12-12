@@ -2,6 +2,12 @@ import React from 'react';
 import IconCircle from './icon-circle';
 import SpinnerButton from './spinner-button';
 
+/**
+ * The close modal delete article.
+ *
+ * @return {JSX.Element|null}
+ * @constructor
+ */
 function CloseModal({open, setOpen, onSubmit, isLoading}) {
   return open ? (
     <form className="modal" onSubmit={onSubmit}>

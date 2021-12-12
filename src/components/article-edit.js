@@ -3,7 +3,6 @@ import ArrowPointing from './arrow-pointing';
 import Modal from './modal';
 import {
   deleteArticle,
-  getArticlesAtPage,
   getMyArticlesAtPage,
   modifyArticle,
 } from '../services/article';
@@ -13,6 +12,11 @@ import {Link} from 'react-router-dom';
 import ArticleModel from '../model/article-model';
 import CloseModal from './close-modal';
 
+/**
+ * An editable article
+ *
+ * @return {JSX.Element} the editable article
+ */
 function ArticleEdit({
   title,
   date,
@@ -29,8 +33,6 @@ function ArticleEdit({
   const [newnewBody, setNewnewBody] = useState(description);
   const [newnewTitle, setNewnewTitle] = useState(title);
   const {run, isLoading} = useHandleAsync();
-  const [, updateState] = React.useState();
-  const forceUpdate = React.useCallback(() => updateState({}), []);
   const [deleteOpen, setDeleteOpen] = useState(false);
 
   useEffect(() => {

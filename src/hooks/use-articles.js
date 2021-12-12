@@ -3,6 +3,12 @@ import {useEffect, useMemo, useState} from 'react';
 import useHandleAsync from './use-handle-async';
 import ArticleModel from '../model/article-model';
 
+/**
+ * Uses the articles endpoint with a custom run fn.
+ *
+ * @param {*} runFn a custom run function
+ * @return {{isLoading: boolean, pageNumber: unknown, isError: boolean, data: *, setData: (function(*): *), setLoading: (function(): *), run: (function(*): *), error: *, articles: *, isSuccess: boolean}}
+ */
 export function useArticles(runFn) {
   const {
     data,

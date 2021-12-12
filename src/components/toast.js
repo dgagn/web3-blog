@@ -2,6 +2,12 @@ import React, {useCallback, useState} from 'react';
 import {Toast} from 'react-bootstrap';
 import {globalEmitter} from '../emitter';
 
+/**
+ * The blog toast component that uses bootstrap toasts.
+ *
+ * @return {JSX.Element} the blog toast component
+ * @constructor
+ */
 function BlogPopup() {
   const [show, setShow] = useState(false);
   const [title, setTitle] = useState('');

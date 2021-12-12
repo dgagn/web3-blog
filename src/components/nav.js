@@ -2,6 +2,12 @@ import React, {useCallback} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import UserLogout from './user-logout';
 
+/**
+ * the nav bar.
+ *
+ * @return {JSX.Element} the nav bar
+ * @constructor
+ */
 function Nav({user, logout, links}) {
   const navigate = useNavigate();
   const closeSession = useCallback(() => {

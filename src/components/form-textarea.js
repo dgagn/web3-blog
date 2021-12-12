@@ -1,5 +1,11 @@
-import React, {useMemo} from 'react';
+import React from 'react';
 
+/**
+ * a form text area.
+ *
+ * @return {JSX.Element} the form text area
+ * @constructor
+ */
 function FormTextArea({
   id,
   children,

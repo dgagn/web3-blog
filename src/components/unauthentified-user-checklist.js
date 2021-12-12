@@ -1,6 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
+/**
+ * The unauthentified user's checklist.
+ *
+ * @return {JSX.Element} the unauthentified user's checklist
+ * @constructor
+ */
 function UnauthentifiedUserChecklist() {
   return (
     <>

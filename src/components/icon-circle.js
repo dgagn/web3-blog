@@ -1,3 +1,9 @@
+/**
+ * The circle icon.
+ *
+ * @return {JSX.Element} the circle icon
+ * @constructor
+ */
 function IconCircle({
   className,
   children,

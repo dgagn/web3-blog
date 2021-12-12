@@ -1,9 +1,14 @@
-import useHandleAsync from '../hooks/use-handle-async';
 import FormInput from './form-input';
 import SpinnerButton from './spinner-button';
 import React from 'react';
 import useRegister from '../hooks/use-register';
 
+/**
+ * A register form.
+ *
+ * @return {JSX.Element} the register form
+ * @constructor
+ */
 function RegisterForm({onSubmit}) {
   const {
     handleSubmit,

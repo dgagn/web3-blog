@@ -1,6 +1,14 @@
 import {useCallback, useMemo} from 'react';
 import {useNavigate} from 'react-router-dom';
 
+/**
+ * A hook to facilitates the pagination.
+ *
+ * @param {*} endpoint the endpoint
+ * @param {*} data the data
+ * @param {*} pageNumber the page number
+ * @return {{navigateFirstPage: ((function(): void)|*), total: number, navigateNextPage: ((function(): void)|*), nextPage: *, navigatePrevPage: ((function(): void)|*), prevPage: number, navigateLastPage: ((function(): void)|*), maxPage: number}}
+ */
 function usePagination(endpoint, data, pageNumber) {
   const navigate = useNavigate();
 
@@ -23,12 +31,12 @@ function usePagination(endpoint, data, pageNumber) {
   const navigateNextPage = useCallback(() => {
     if (nextPage === null) return;
     navigate(`${endpoint}?page=${nextPage}`);
-  }, [navigate, nextPage]);
+  }, [endpoint, navigate, nextPage]);
 
   const navigatePrevPage = useCallback(() => {
     if (prevPage === null) return;
     navigate(`${endpoint}?page=${prevPage}`);
-  }, [navigate, prevPage]);
+  }, [endpoint, navigate, prevPage]);
 
   const navigateFirstPage = useCallback(() => {
     if (prevPage === null) return;
@@ -38,7 +46,7 @@ function usePagination(endpoint, data, pageNumber) {
   const navigateLastPage = useCallback(() => {
     if (nextPage === null) return;
     navigate(`${endpoint}?page=${maxPage}`);
-  }, [maxPage, navigate, nextPage]);
+  }, [endpoint, maxPage, navigate, nextPage]);
 
   return {
     navigateFirstPage,

@@ -67,14 +67,16 @@ function MyArticlesPage() {
       ) : (
         <>{pageNumber <= maxPage && <NoArticles key={Math.random()} />}</>
       )}
-      <Pagination
-        navigateFirstPage={navigateFirstPage}
-        navigateLastPage={navigateLastPage}
-        navigateNextPage={navigateNextPage}
-        nextPage={nextPage}
-        prevPage={prevPage}
-        navigatePrevPage={navigatePrevPage}
-      />
+      {maxPage > 1 && (
+        <Pagination
+          navigateFirstPage={navigateFirstPage}
+          navigateLastPage={navigateLastPage}
+          navigateNextPage={navigateNextPage}
+          nextPage={nextPage}
+          prevPage={prevPage}
+          navigatePrevPage={navigatePrevPage}
+        />
+      )}
     </div>
   );
 }

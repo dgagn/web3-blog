@@ -2,10 +2,23 @@ import {useCallback, useEffect, useMemo, useState} from 'react';
 import useHandleAsync from './use-handle-async';
 import {isClientError} from '../services/status';
 
+/**
+ * Validates the passwords.
+ *
+ * @param {string} firstPass the first password
+ * @param {string} secondPass the second password
+ * @return {boolean} true if passwords match.
+ */
 function validatePasswords(firstPass, secondPass) {
   return firstPass === secondPass;
 }
 
+/**
+ * Uses the register component.
+ *
+ * @param {*} fn the fn to run on register
+ * @return {{isLoading: boolean, handleSubmit: ((function(*): void)|*), isEmailError: string, samePassMatchError: (string), isPassMatch: boolean, isSuccess: boolean}}
+ */
 function useRegister(fn) {
   const {run, isLoading, error, isSuccess} = useHandleAsync();
 

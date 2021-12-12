@@ -1,5 +1,11 @@
 import React from 'react';
 
+/**
+ * The pagination.
+ *
+ * @return {JSX.Element} the pagination component
+ * @constructor
+ */
 function Pagination({
   prevPage,
   navigateFirstPage,
@@ -9,34 +15,34 @@ function Pagination({
   navigateLastPage,
 }) {
   return (
-    <div className="flex justify-center gap-x-lg pb-lg">
+    <div className="flex justify-center gap-sm pb-lg flex-wrap">
       <button
         className="btn link bg-contrast-100 text-contrast-900"
         disabled={prevPage === null}
         onClick={navigateFirstPage}
       >
-        First
+        Premier
       </button>
       <button
         className="btn link bg-contrast-100 text-contrast-900"
         disabled={prevPage === null}
         onClick={navigatePrevPage}
       >
-        Prev
+        Précédent
       </button>
       <button
         className="btn link bg-contrast-100 text-contrast-900"
         disabled={nextPage === null}
         onClick={navigateNextPage}
       >
-        Next
+        Suivant
       </button>
       <button
         className="btn link bg-contrast-100 text-contrast-900"
         disabled={nextPage === null}
         onClick={navigateLastPage}
       >
-        Last
+        Dernier
       </button>
     </div>
   );

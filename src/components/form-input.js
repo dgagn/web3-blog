@@ -1,5 +1,11 @@
 import React, {useMemo} from 'react';
 
+/**
+ * The form input.
+ *
+ * @return {JSX.Element} a form input
+ * @constructor
+ */
 function FormInput({
   type = 'text',
   id,

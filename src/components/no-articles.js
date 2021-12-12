@@ -1,6 +1,12 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 
+/**
+ * When theirs no article.
+ *
+ * @return {JSX.Element} when theirs no article
+ * @constructor
+ */
 function NoArticles() {
   return (
     <>

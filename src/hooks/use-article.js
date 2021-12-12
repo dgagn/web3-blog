@@ -6,6 +6,13 @@ import {isValid} from '../services/cache';
 import * as article from '../services/article';
 import {isClientError} from '../services/status';
 
+/**
+ * Use the article endpoint
+ *
+ * @param {string} endpoint the endpoint to use
+ * @return {{isLoading: boolean, isError: (boolean|false|*), fromPage: number, currentArticle: ArticleModel}}
+ * the article
+ */
 function useArticle(endpoint) {
   const {articleId} = useParams();
   const {run, data, isLoading, isError, error, setData} = useHandleAsync();

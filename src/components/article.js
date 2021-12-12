@@ -1,6 +1,11 @@
 import React from 'react';
 import ArrowPointing from './arrow-pointing';
 
+/**
+ * The article format.
+ *
+ * @return {JSX.Element} the article
+ */
 function Article({title, date, description}) {
   return (
     <article className="article">

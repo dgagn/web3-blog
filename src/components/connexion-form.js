@@ -3,6 +3,12 @@ import FormInput from './form-input';
 import SpinnerButton from './spinner-button';
 import useConnexion from '../hooks/use-connexion';
 
+/**
+ * The connexion form.
+ *
+ * @return {JSX.Element} the connexion form
+ * @constructor
+ */
 function ConnexionForm({onSubmit}) {
   const {handleSubmit, isError, getErrorMessage, isLoading} =
     useConnexion(onSubmit);

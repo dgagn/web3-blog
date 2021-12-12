@@ -2,6 +2,12 @@ import {useCallback, useMemo} from 'react';
 import useHandleAsync from './use-handle-async';
 import {isClientError, isServerError} from '../services/status';
 
+/**
+ * Uses the connexion hook to make an api call to connect.
+ *
+ * @param {*} fn the fn to run
+ * @return {{isLoading: boolean, handleSubmit: ((function(*): void)|*), isError: boolean, getErrorMessage: (string|string)}}
+ */
 function useConnexion(fn) {
   const {run, isLoading, isError, error} = useHandleAsync();
 
