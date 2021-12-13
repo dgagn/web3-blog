@@ -9,6 +9,12 @@ import NotFoundPage from './not-found';
 import usePagination from '../hooks/use-pagination';
 import Pagination from '../components/pagination';
 
+/**
+ * The full list of articles.
+ *
+ * @return {JSX.Element} the full list of articles.
+ * @constructor
+ */
 function ArticlesPage() {
   const {isSuccess, articles, pageNumber, isError, isLoading, error, data} =
     useArticles(getArticlesAtPage);

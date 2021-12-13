@@ -2,6 +2,12 @@ import React from 'react';
 import {useAuth} from '../context/auth';
 import ConnexionForm from '../components/connexion-form';
 
+/**
+ * The connexion page.
+ *
+ * @return {JSX.Element} the connexion page
+ * @constructor
+ */
 function ConnexionPage() {
   const {login} = useAuth();
   return (

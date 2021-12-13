@@ -1,5 +1,10 @@
 import React from 'react';
 
+/**
+ * The not found page.
+ * @return {JSX.Element} not found page
+ * @constructor
+ */
 function NotFoundPage() {
   return (
     <div className="articles container max-w-md">

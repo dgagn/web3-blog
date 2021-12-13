@@ -3,6 +3,12 @@ import {useNavigate} from 'react-router-dom';
 import useArticle from '../hooks/use-article';
 import NotFoundPage from './not-found';
 
+/**
+ * The single article page.
+ *
+ * @return {JSX.Element} the single article page
+ * @constructor
+ */
 function ArticlePage() {
   const {currentArticle, isError, fromPage} = useArticle('articles');
   const navigate = useNavigate();

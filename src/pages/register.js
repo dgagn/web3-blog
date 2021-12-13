@@ -2,6 +2,11 @@ import {useAuth} from '../context/auth';
 import RegisterForm from '../components/register-form';
 import React from 'react';
 
+/**
+ * The register page.
+ * @return {JSX.Element} the register page
+ * @constructor
+ */
 function RegisterPage() {
   const {register} = useAuth();
   return (

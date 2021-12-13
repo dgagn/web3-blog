@@ -1,5 +1,12 @@
 import React from 'react';
 
+/**
+ * The error page.
+ *
+ * @param {*} error the error of the error page
+ * @return {JSX.Element} the error page with an error
+ * @constructor
+ */
 function ErrorPage({error}) {
   return (
     <div className="articles container max-w-md">

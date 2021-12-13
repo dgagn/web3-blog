@@ -3,13 +3,19 @@ import {useNavigate} from 'react-router-dom';
 import useArticle from '../hooks/use-article';
 import NotFoundPage from './not-found';
 
+/**
+ * My article page.
+ *
+ * @return {JSX.Element} the my-article page
+ * @constructor
+ */
 function MyArticlePage() {
   const {currentArticle, isError, fromPage} = useArticle('articles/editable');
   const navigate = useNavigate();
 
   const returnHome = useCallback(
     () => navigate(`/my-articles/?page=${fromPage}`),
-    [],
+    [fromPage, navigate],
   );
 
   return isError ? (

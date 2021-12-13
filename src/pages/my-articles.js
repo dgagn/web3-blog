@@ -10,6 +10,12 @@ import NotFoundPage from './not-found';
 import usePagination from '../hooks/use-pagination';
 import Pagination from '../components/pagination';
 
+/**
+ * My articles page.
+ *
+ * @return {JSX.Element} the my-articles page
+ * @constructor
+ */
 function MyArticlesPage() {
   const {
     isSuccess,

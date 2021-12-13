@@ -8,6 +8,12 @@ import {globalEmitter} from '../emitter';
 import {useNavigate} from 'react-router-dom';
 import {Link} from 'react-router-dom';
 
+/**
+ * The creation of articles is here.
+ *
+ * @return {JSX.Element} the create article.
+ * @constructor
+ */
 function MyArticlesCreate() {
   const {run, isLoading, isSuccess, data} = useHandleAsync();
   const navigate = useNavigate();

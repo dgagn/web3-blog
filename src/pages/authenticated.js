@@ -11,6 +11,12 @@ import Nav from '../components/nav';
 import Welcome from './welcome';
 import authentifiedLinks from '../nav/authentified-links';
 
+/**
+ * The authenticated app.
+ *
+ * @return {JSX.Element} the authenticated app
+ * @constructor
+ */
 function AuthenticatedPage() {
   const {logout, user} = useAuth();
 
@@ -23,6 +29,13 @@ function AuthenticatedPage() {
   );
 }
 
+/**
+ * The routes available to authenticated users.
+ *
+ * @param {*} user the user
+ * @return {JSX.Element} the authenticated app routes
+ * @constructor
+ */
 function AppRoutes({user}) {
   return (
     <Routes>

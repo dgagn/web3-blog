@@ -3,6 +3,11 @@ import AuthentifiedUserChecklist from '../components/authentified-user-checklist
 import UnauthentifiedUserChecklist from '../components/unauthentified-user-checklist';
 import {useAuth} from '../context/auth';
 
+/**
+ * The welcome page
+ * @return {JSX.Element} the welcome page
+ * @constructor
+ */
 function Welcome({name = 'mon ami', email = ''}) {
   const {user} = useAuth();
 

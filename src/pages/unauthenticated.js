@@ -9,6 +9,11 @@ import Nav from '../components/nav';
 import Welcome from './welcome';
 import unauthentifiedLinks from '../nav/unauthentified-links';
 
+/**
+ * The unauthenticated page.
+ * @return {JSX.Element} unauthenticated page.
+ * @constructor
+ */
 function UnauthenticatedPage() {
   return (
     <>
@@ -19,6 +24,12 @@ function UnauthenticatedPage() {
   );
 }
 
+/**
+ * Unauthenticated routes for a user
+ *
+ * @return {JSX.Element} Unauthenticated routes
+ * @constructor
+ */
 function AppRoutes() {
   return (
     <Routes>
